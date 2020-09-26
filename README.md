@@ -20,7 +20,7 @@ python run.py
 
 User can specify the following attributes:
 	* batch_size
-	* epochs
-	* model
+	* epoch
+	* models
 	* loss function
 	* optimizer
