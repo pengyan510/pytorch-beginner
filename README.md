@@ -19,6 +19,7 @@ python run.py
 ```
 
 User can specify the following attributes:
+
 	* batch_size
 	* epoch
 	* models
