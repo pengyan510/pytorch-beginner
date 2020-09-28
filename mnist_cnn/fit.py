@@ -5,7 +5,8 @@ def run_epoch(dl, model, loss_func, opt=None):
     total_loss = 0
     total_size = 0
     cnt_true = 0
-    for x, y in dl:
+    for batch in dl:
+        x, y = batch['x'], batch['y']
         y_pred = model(x)
         loss = loss_func(y_pred, y)
         total_loss += loss * x.size()[0]

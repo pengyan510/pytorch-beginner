@@ -1,7 +1,7 @@
 import torch.nn.functional as F
 from torch import optim
 import mnist_cnn
-from mnist_cnn.dataload import *
+from mnist_cnn.dataload import createDataLoader
 from mnist_cnn.model import CNN
 
 
@@ -17,8 +17,9 @@ opt = optim.Adam(
 
 def main():
 	x_train, y_train, x_valid, y_valid = mnist_cnn.read()
-	train_dl = WrappedDataLoader(x_train, y_train, x_transform, batch_size=batch_size, shuffle=True)
-	valid_dl = WrappedDataLoader(x_valid, y_valid, x_transform, batch_size=batch_size * 2)
+
+	train_dl = createDataLoader(x_train, y_train, batch_size=batch_size, shuffle=True)
+	valid_dl = createDataLoader(x_valid, y_valid, batch_size=batch_size * 2)
 
 	mnist_cnn.fit(train_dl, valid_dl, model, loss_func, opt, epochs)
 
